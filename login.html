@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>로그인 화면</title>
+  <link rel="stylesheet" href="./styles/login.css"/>
+</head>
+<body>
+<div class="item--8Jg">
+    <form id="loginForm" action="Login.php" method="POST">
+    <div class="item--userid-container">
+      <input type="text" class="item--userid" name="userID" placeholder="아이디"/>
+    </div>
+    <div class="item--userpw-container">
+      <input type="password" class="item--userpw" name="userPW" placeholder="비밀번호"/>
+    <button><a href="forgetID.html"><p class = 'pointer'><img class="item--RwJ" src="./assets/-mNC.png"/></p></a></button> <!--forgetID버튼-->
+    <button type="submit"><a href="home.html"><p class = 'pointer'><img class="item--HME" src="./assets/-JFE.png"/></p></a></button> <!--로그인 버튼-->
+  </form>
+  </div>
+  <script>
+        $(document).ready(function () {
+            // 폼 제출 이벤트 핸들러
+            $('#loginForm').submit(function (e) {
+                e.preventDefault();
+
+                // 입력된 데이터 가져오기
+                var userID = $('#userID').val();
+                var userPW = $('#userPW').val();
+
+                // 간단한 유효성 검사 (실제로는 더 강화된 검사가 필요합니다)
+                if (!userID || !userPW) {
+                    alert('ID와 비밀번호를 모두 입력하세요.');
+                    return;
+                }
+
+                // 로그인 처리
+                $.ajax({
+                    type: 'POST',
+                    url: 'Login.php', // 로그인을 처리할 백엔드 파일 경로
+                    data: {
+                        userID: userID,
+                        userPW: userPW
+                    },
+                    success: function (response) {
+                        if (response === 'success') {
+                            alert('로그인 성공');
+                            // 로그인 성공 시 다음 페이지로 리다이렉트 또는 다른 동작 수행
+                        } else {
+                            alert('로그인 실패. 아이디 또는 비밀번호를 확인하세요.');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                        alert('서버 에러');
+                    }
+                });
+            });
+        });
+    </script>
+  <img class="item--Chr" src="./assets/-asE.png"/> <!--배경 언덕-->
+  <img class="item--KnU" src="./assets/-tRr.png"/> <!--투명도 조절한 구름-->
+  <img class="item--3Cg" src="./assets/-Pgp.png"/> <!--투명도 조절한 구름-->
+  <img class="item--Yv8" src="./assets/-qoa.png"/>
+  <img class="item--EHA" src="./assets/-GQU.png"/> <!--login-->
+  <img class="item--99E" src="./assets/-xep.png"/> <!--투명도 조절한 구름-->
+  <img class="item--4mz" src="./assets/-bi4.png"/> <!--투명도 조절한 구름-->
+  <img class="item--Brc" src="./assets/-M2c.png"/> <!--투명도 조절한 구름-->
+  <img class="item--ibe" src="./assets/-89a.png"/> <!--투명도 조절한 구름-->
+  <img class="item--dyW" src="./assets/-QLk.png"/>
+  <img class="welcome-yGg" src="./assets/welcome.png"/>
+  <img class="item--iVA" src="./assets/-snC.png"/> <!--password-->
+  <img class="item--Npc" src="./assets/-8kU.png"/>
+  <img class="item-006-1-Hgg" src="./assets/-XsS.png"/>
+  <img class="item--ypQ" src="./assets/-tzg.png"/>
+  <img class="item--79v" src="./assets/-W6G.png"/>
+  <button><a href="forgetID.html"><p class = 'pointer'><img class="item--RwJ" src="./assets/-mNC.png"/></p></a></button> <!--forgetID버튼-->
+  <img class="item--wek" src="./assets/-J3W.png"/>
+  <img class="item--Gwv" src="./assets/-ohe.png"/>
+  <img class="item--18p" src="./assets/-87e.png"/>
+  <button><a href="home.html"><p class = 'pointer'><img class="item--HME" src="./assets/-JFE.png"/></p></a></button> <!--로그인 버튼-->
+</div>
+</body>
