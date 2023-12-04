@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #회원가입화면 {
+            position: absolute;
+            background: url('https://ifh.cc/g/Jn4Sfz.png') center center no-repeat;
+            background-size: cover;
+            height: 800px;
+            width: 360px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            padding: 20px; /* Added padding for better spacing */
+            box-sizing: border-box; /* Ensures padding is included in the width and height */
+        }
+
+        /* 각 입력창 스타일 */
+        #name {
+        width: 120px;
+        padding: 10px;
+        margin-top: 285px;
+        margin-left: 100px;  
+        background-color: #f0f0f000; /* 배경색 지정 */
+        border: 0px solid #cccccc00;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-weight: bold; /* 볼드 글씨체 추가 */
+        color: #ffffff; /* 글씨 색상 변경 */
+    }
+
+    #name::placeholder {
+    color: #ffffff; /* 플레이스홀더 색상 설정 */
+}
+
+    /* ID 입력창 스타일 */
+    #id {
+        width: 120px; /* 예시 크기, 필요에 따라 조절하세요 */
+        margin-top: 68px;
+        margin-left: 100px;  
+        background-color: #e0e0e000; /* 배경색 지정 */
+        border: 0px solid #99999900;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-weight: bold; /* 볼드 글씨체 추가 */
+        color: #ffffff; /* 글씨 색상 변경 */
+    }
+
+    #id::placeholder {
+    color: #ffffff; /* 플레이스홀더 색상 설정 */
+}
+
+    /* 비밀번호 입력창 스타일 */
+    #pw {
+        width: 100px; /* 예시 크기, 필요에 따라 조절하세요 */
+        margin-top: 65px;
+        margin-left: 125px;  
+        background-color: #d0d0d000; /* 배경색 지정 */
+        border: 0px solid #66666600;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-weight: bold; /* 볼드 글씨체 추가 */
+        color: #ffffff; /* 글씨 색상 변경 */
+    }
+
+    #pw::placeholder {
+    color: #ffffff; /* 플레이스홀더 색상 설정 */
+}
+
+    /* 이메일 입력창 스타일 */
+    #email {
+        width: 120px; /* 예시 크기, 필요에 따라 조절하세요 */
+        margin-top: 70px;
+        margin-left: 90px;  
+        background-color: #c0c0c000; /* 배경색 지정 */
+        border: 0px solid #55555500;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-weight: bold; /* 볼드 글씨체 추가 */
+        color: #ffffff; /* 글씨 색상 변경 */
+    }
+
+    #email::placeholder {
+    color: #ffffff; /* 플레이스홀더 색상 설정 */
+}
+
+     /* 이메일 입력창 스타일 */
+     #kg {
+        width: 70px; /* 예시 크기, 필요에 따라 조절하세요 */
+        margin-top: 70px;
+        margin-left: 160px;  
+        background-color: #c0c0c000; /* 배경색 지정 */
+        border: 0px solid #55555500;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-weight: bold; /* 볼드 글씨체 추가 */
+        color: #ffffff; /* 글씨 색상 변경 */
+    }
+
+    #kg::placeholder {
+    color: #ffffff; /* 플레이스홀더 색상 설정 */
+}
+        /* 버튼 스타일 */
+        button {
+            width: 100%; /* Full width */
+            margin-top: 50px;
+            padding: 10px;
+            background-color: rgba(176, 214, 240, 0);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #ffffff00; /* 플레이스홀더 색상 설정 */
+        }
+    </style>
+</head>
+<body>
+
+    <div id='회원가입화면'>
+        <form>
+            <label for="name"></label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+
+            <label for="id"></label>
+            <input type="text" id="id" name="id" placeholder="Enter your id">
+
+            <label for="pw"></label>
+            <input type="password" id="pw" name="pw" placeholder="Enter your pw">
+
+            <label for="email"></label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <label for="kg"></label>
+            <input type="text" id="kg" name="kg" placeholder="Enter your kg">
+
+            <button type="submit">_</button> </form></div>
+    
+        <script>
+            $(document).ready(function () {
+    // 가입하기 버튼이 클릭되었을 때의 이벤트 핸들러
+    $('button[type="submit"]').click(function (e) {
+        e.preventDefault(); // 기본 이벤트 방지 (페이지 새로고침 방지)
+
+        // 입력된 데이터 가져오기
+        var name = $('#name').val();
+        var id = $('#id').val();
+        var pw = $('#pw').val();
+        var email = $('#email').val();
+        var kg = $('#kg').val(); // 수정: 올바른 ID 선택자 사용
+
+        // Ajax 요청
+        $.ajax({
+            type: 'POST', // 전송 방식 설정
+            url: 'registWrite.php', // 백엔드 파일 경로 설정
+            data: {
+                name: name,
+                id: id,
+                pw: pw,
+                email: email,
+                kg: kg
+            },
+            success: function (response) {
+                // 성공 시 동작
+                console.log(response); // 백엔드에서 반환된 데이터 콘솔에 출력
+                alert("회원가입이 완료되었습니다.");
+                // 여기에 추가적인 동작을 수행할 수 있습니다.
+            },
+            error: function (xhr, status, error) {
+                // 에러 시 동작
+                console.error(xhr.responseText); // 에러 메시지 콘솔에 출력
+                // 여기에 에러 시 수행할 동작을 추가할 수 있습니다.
+            }
+        });
+    });
+});
+        </script>
+    
+    
+    </body></html>
