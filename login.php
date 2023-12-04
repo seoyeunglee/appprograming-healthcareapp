@@ -6,8 +6,8 @@ $password = "1234"; // 데이터베이스 비밀번호
 $dbname = "test"; // 데이터베이스 이름
 
 // POST로 전송된 데이터 받기
-$userID = $_POST['userId'];
-$userPW = $_POST['userPw'];
+$userId = $_POST['userId'];
+$userPw = $_POST['userPw'];
 
 // 데이터베이스 연결
 $conn = new mysqli($servername, $username, $password, $dbname);
